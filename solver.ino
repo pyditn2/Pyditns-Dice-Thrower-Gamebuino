@@ -2,57 +2,43 @@
 Solver solver;
 
 void initSolver(){
-  solver.input = 0;
-  solver.isRolling = false;
+  solver.duration = 0;
+  solver.diceType = 0;
   solver.diceValue = 0;
-  solver.solverControl = false;
+  solver.startFrame = 0;
+  solver.currentFrame = 0;
+  solver.frameDelay = 2;
 }
 
 int throwDice(int max) {
     return (rand() % diceValues[max]) + 1;
 }
 
-void animateThrow(int max){
-  int updateCadence = 1;
-  int counter = 0;
+void animateThrow(){
 
-  if(gb.frameCount % updateCadence == 0){
-    gb.display.cursorX = 40;
-    gb.display.cursorY = 18;
-    gb.display.fontSize = 2;
-    gb.display.print(throwDice(max));
-    gb.display.fontSize = 1;
-    counter ++;
-    if (counter == 5){
-      updateCadence++;
-      if(updateCadence == 6){
-        solver.isRolling = false;
-      }
+  if (solver.currentFrame < solver.duration || solver.currentFrame == solver.duration) {
+    if(gb.frameCount % solver.frameDelay == 0){
+      solver.diceValue = throwDice(solver.diceType);
+      solver.frameDelay++;
     }
+    solver.currentFrame++;
+    
   }
 }
 
-void startSolver(int diceType){
-  solver.solverControl = true;
-  int initUpdateCadence = 1;
-  int initCounter = 0;
-  animateThrow(diceType);
+void startSolver(int diceType, int duration){
+  setDice(getChooserSelection());
+  solver.diceType = diceType;
+  solver.duration = duration;
+  solver.startFrame = gb.frameCount;
 }
 
-boolean getRolling(){
-  return solver.isRolling;
-}
-
-void setRolling(boolean rolling){
-  solver.isRolling = rolling;
-}
-
-boolean getControl(){
-  return solver.solverControl;
-}
-
-void setControl(boolean control){
-  solver.solverControl = control;
+void showSolver(){
+  gb.display.cursorX = 40;
+  gb.display.cursorY = 18;
+  gb.display.fontSize = 2;
+  gb.display.print(solver.diceValue);
+  gb.display.fontSize = 1;
 }
 
 int getDiceValue(){

@@ -39,6 +39,7 @@ void updateChooser(){
 void drawChooser(){
   byte y = chooser.current * 6;
   gb.display.drawBitmap(chooser.x,y,arrow,NOROT,NOFLIP);
+  
 
 }
 
@@ -56,6 +57,8 @@ void showSelection(){
   gb.display.fontSize = 2;
   gb.display.print(diceValues[chooser.current]);
   gb.display.fontSize = 1;
+  setDice(getChooserSelection());
+
 }
 
 int getChooserSelection(){

@@ -13,6 +13,7 @@ B01100000,
 B00100000,
 };
 
+
 typedef struct {
   byte current;
   byte max;
@@ -21,14 +22,20 @@ typedef struct {
 } Arrow;
 
 typedef struct {
-  byte input;
+  int duration;
   int diceValue;
-  boolean isRolling;
-  boolean solverControl;
+  int diceType;
+  int startFrame;
+  int currentFrame;
+  int frameDelay;
 } Solver;
 
-int diceValues[] = {4, 6, 8, 10, 12, 20, 100};  // Dice options
+typedef struct {
+  int currentDice;
+} DiceDisplay;
 
+int diceValues[] = {4, 6, 8, 10, 12, 20, 100};  // Dice options
+int displayControl = 0;
 
 
 // the setup routine runs once when Gamebuino starts up
@@ -52,15 +59,24 @@ void loop(){
     updateChooser();
     drawChooser();
 
-    if(gb.buttons.pressed(BTN_A) && gb.frameCount > 5){
+    if(gb.buttons.pressed(BTN_B) && gb.frameCount > 5){
+      displayControl = 1;
       initSolver();
-      startSolver(getChooserSelection());
+      startSolver(getChooserSelection(), 40);
+      
     }
 
-    if(!getControl()){
+    if(displayControl == 0){
       showSelection();
+
+    }
+    if(displayControl == 1){
+      animateThrow();
+      showSolver();
+      
     }
   }
+  showDisplay();
 }
 
 void initGame(){
@@ -68,6 +84,8 @@ void initGame(){
   gb.pickRandomSeed(); //pick a different random seed each time for games to be different
   gb.battery.show = false; //hide the battery indicator
   
+  displayControl = 0;
   initSolver();
   initChooser();
+  initDisplay();
 }
