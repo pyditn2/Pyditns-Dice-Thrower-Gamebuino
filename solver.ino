@@ -34,8 +34,8 @@ void startSolver(int diceType, int duration){
 }
 
 void showSolver(){
-  gb.display.cursorX = 40;
-  gb.display.cursorY = 18;
+  gb.display.cursorX = 50;
+  gb.display.cursorY = 10;
   gb.display.fontSize = 2;
   gb.display.print(solver.diceValue);
   gb.display.fontSize = 1;

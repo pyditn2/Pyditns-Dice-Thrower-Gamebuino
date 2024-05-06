@@ -52,8 +52,8 @@ void drawMenu(){
 }
 
 void showSelection(){
-  gb.display.cursorX = 40;
-  gb.display.cursorY = 18;
+  gb.display.cursorX = 50;
+  gb.display.cursorY = 10;
   gb.display.fontSize = 2;
   gb.display.print(diceValues[chooser.current]);
   gb.display.fontSize = 1;

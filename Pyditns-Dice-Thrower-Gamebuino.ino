@@ -36,7 +36,7 @@ typedef struct {
 
 int diceValues[] = {4, 6, 8, 10, 12, 20, 100};  // Dice options
 int displayControl = 0;
-
+int resumeTime = 0;
 
 // the setup routine runs once when Gamebuino starts up
 void setup(){
@@ -59,7 +59,7 @@ void loop(){
     updateChooser();
     drawChooser();
 
-    if(gb.buttons.pressed(BTN_B) && gb.frameCount > 5){
+    if(gb.buttons.pressed(BTN_A) && (gb.frameCount - resumeTime) > 5){
       displayControl = 1;
       initSolver();
       startSolver(getChooserSelection(), 40);
@@ -85,6 +85,7 @@ void initGame(){
   gb.battery.show = false; //hide the battery indicator
   
   displayControl = 0;
+  resumeTime = gb.frameCount;
   initSolver();
   initChooser();
   initDisplay();
