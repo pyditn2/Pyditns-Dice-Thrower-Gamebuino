@@ -10,10 +10,12 @@ void initSolver(){
   solver.frameDelay = 2;
 }
 
+//generates a random number between 1 and max
 int throwDice(int max) {
     return (rand() % diceValues[max]) + 1;
 }
 
+//animates the throw by cycling throw random possible numbers, until it lands on a final number
 void animateThrow(){
 
   if (solver.currentFrame < solver.duration || solver.currentFrame == solver.duration) {
@@ -26,6 +28,7 @@ void animateThrow(){
   }
 }
 
+//prepares the solver for the animation by setting the required parameters
 void startSolver(int diceType, int duration){
   setDice(getChooserSelection());
   solver.diceType = diceType;
@@ -33,6 +36,7 @@ void startSolver(int diceType, int duration){
   solver.startFrame = gb.frameCount;
 }
 
+//draws the current diceValue to the screen
 void showSolver(){
   gb.display.cursorX = 50;
   gb.display.cursorY = 10;
@@ -41,6 +45,7 @@ void showSolver(){
   gb.display.fontSize = 1;
 }
 
+//returns the current diceValue
 int getDiceValue(){
   return solver.diceValue;
 }

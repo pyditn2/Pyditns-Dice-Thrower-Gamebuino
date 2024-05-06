@@ -5,6 +5,7 @@ void initDisplay(){
   display.currentDice = 1;
 }
 
+//draws the dice image to the screen
 void showDisplay(){
  //if(display.currentDice == 0){
  // gb.display.drawTriangle(53, 2, 64, 21, 42, 21);
@@ -15,6 +16,11 @@ void showDisplay(){
     break;
   case 1:
     gb.display.drawRoundRect(43, 5, 20, 20, 3);
+    gb.display.drawLine(44, 6, 49, 1);
+    gb.display.drawLine(62, 6, 67, 1);
+    gb.display.drawLine(62, 22, 67, 17);
+    gb.display.drawLine(49, 1, 67, 1);
+    gb.display.drawLine(67, 17, 67, 1);
     break;
   case 2:
     gb.display.drawTriangle(53, 2, 65, 21, 41, 21);
@@ -45,6 +51,9 @@ void showDisplay(){
     gb.display.drawLine(48, 28, 41, 16);
     gb.display.drawLine(64, 28, 71, 16);
     break;
+  case 5:
+    gb.display.drawTriangle(42, 9, 70, 9, 56, 27);
+    break;
   case 6:
     gb.display.drawCircle(56, 17, 15);
     break;
@@ -53,6 +62,7 @@ void showDisplay(){
  }
 }
 
+//sets the currently displayed dice type 
 void setDice(int DiceType){
   display.currentDice = DiceType;
 }

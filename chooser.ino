@@ -9,6 +9,7 @@ void initChooser(){
 
 }
 
+//Animates the arrow and goes up/down
 void updateChooser(){
   if(chooser.right && gb.frameCount % 2 == 0){
     chooser.x ++;
@@ -36,6 +37,7 @@ void updateChooser(){
   }
 }
 
+//draws the arrow bitmap to the screen
 void drawChooser(){
   byte y = chooser.current * 6;
   gb.display.drawBitmap(chooser.x,y,arrow,NOROT,NOFLIP);
@@ -43,6 +45,7 @@ void drawChooser(){
 
 }
 
+//draws the different dice denominations to the screen
 void drawMenu(){  
   for (int i = 0; i <= chooser.max; i++) {
       gb.display.cursorX = 0;  // Set the position for each value
@@ -51,6 +54,7 @@ void drawMenu(){
   }
 }
 
+//draws the current selection as a bigger number inside the dice to the screen
 void showSelection(){
   gb.display.cursorX = 50;
   gb.display.cursorY = 10;
@@ -61,6 +65,7 @@ void showSelection(){
 
 }
 
+//returns what the arrow is currently pointing to
 int getChooserSelection(){
   return chooser.current;
 }
