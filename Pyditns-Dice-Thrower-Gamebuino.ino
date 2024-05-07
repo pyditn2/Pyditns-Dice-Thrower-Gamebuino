@@ -34,6 +34,10 @@ typedef struct {
   int currentDice;
 } DiceDisplay;
 
+typedef struct {
+  int total;
+} Adder;
+
 int diceValues[] = {4, 6, 8, 10, 12, 20, 100};  // Dice options
 int displayControl = 0;
 int resumeTime = 0;
