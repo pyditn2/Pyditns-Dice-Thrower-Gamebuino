@@ -81,6 +81,7 @@ void loop(){
     }
   }
   showDisplay();
+  showAdder();
 }
 
 void initGame(){
