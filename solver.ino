@@ -27,6 +27,9 @@ void animateThrow(){
     solver.currentFrame++;
     
   }
+  if (solver.currentFrame == solver.duration) {
+    addValue(getDiceValue(), getDiceType());
+  }
 }
 
 //prepares the solver for the animation by setting the required parameters
@@ -65,4 +68,7 @@ void showSolver(){
 //returns the current diceValue
 int getDiceValue(){
   return solver.diceValue;
+}
+int getDiceType(){
+  return solver.diceType;
 }

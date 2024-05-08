@@ -5,6 +5,7 @@
 //creates a Gamebuino object named gb
 Gamebuino gb;
 
+
 const byte arrow[] PROGMEM = {8,5,
 B00100000,
 B01100000,
@@ -38,6 +39,9 @@ typedef struct {
 typedef struct {
   int total;
   int offsetX;
+  int values[];
+  int diceType[];
+  int index;
 } Adder;
 
 typedef struct {
@@ -73,6 +77,7 @@ void loop(){
       displayControl = 1;
       initSolver();
       startSolver(getChooserSelection(), 40);
+      
       
     }
 
