@@ -39,7 +39,7 @@ void startSolver(int diceType, int duration){
 
 //draws the current diceValue to the screen
 void showSolver(){
-  if(solver.diceType != 0 || solver.diceType != 1 || solver.diceType != 2 || solver.diceType != 6){
+  if(solver.diceType != 0 && solver.diceType != 1 && solver.diceType != 2 && solver.diceType != 6){
     if(solver.diceValue < 10){
       solver.offsetX = 4;
     }

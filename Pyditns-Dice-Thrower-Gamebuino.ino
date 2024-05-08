@@ -37,7 +37,12 @@ typedef struct {
 
 typedef struct {
   int total;
+  int offsetX;
 } Adder;
+
+typedef struct {
+  int numParticles;
+} Handler;
 
 int diceValues[] = {4, 6, 8, 10, 12, 20, 100};  // Dice options
 int displayControl = 0;
@@ -80,9 +85,16 @@ void loop(){
       showSolver();
       
     }
+    showDisplay();
+    
+    if(gb.buttons.repeat(BTN_LEFT, 2)){
+      moveAdder(-2);
+    }else if(gb.buttons.repeat(BTN_RIGHT, 2)){
+      moveAdder(2);
+    }
+    showAdder();
   }
-  showDisplay();
-  showAdder();
+  
 }
 
 void initGame(){
@@ -95,4 +107,6 @@ void initGame(){
   initSolver();
   initChooser();
   initDisplay();
+  initAdder();
+  initEffect();
 }

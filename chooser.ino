@@ -22,13 +22,13 @@ void updateChooser(){
     chooser.right = true;
   }
 
-  if(gb.buttons.released(BTN_DOWN)){
+  if(gb.buttons.repeat(BTN_DOWN, 4)){
     chooser.current ++;
     if(chooser.current > chooser.max){
       chooser.current = 0;
     }
   }
-  if(gb.buttons.released(BTN_UP)){
+  if(gb.buttons.repeat(BTN_UP, 4)){
     if(chooser.current == 0){
       chooser.current = chooser.max;
     }else{
