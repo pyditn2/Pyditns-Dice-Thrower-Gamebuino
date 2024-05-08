@@ -83,7 +83,7 @@ void showDisplay(){
     gb.display.drawTriangle(74, 27, 56, 36, 56, 27);
     break;
   case 6:
-    gb.display.drawCircle(56, 17, 15);
+    gb.display.drawCircle(60, 15, 15);
     break;
   default:
     gb.display.drawTriangle(53, 2, 64, 21, 42, 21);

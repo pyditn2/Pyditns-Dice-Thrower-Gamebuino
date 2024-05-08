@@ -8,6 +8,7 @@ void initSolver(){
   solver.startFrame = 0;
   solver.currentFrame = 0;
   solver.frameDelay = 2;
+  solver.offsetX = 0;
 }
 
 //generates a random number between 1 and max
@@ -38,11 +39,27 @@ void startSolver(int diceType, int duration){
 
 //draws the current diceValue to the screen
 void showSolver(){
-  gb.display.cursorX = 50;
+  if(solver.diceType != 0 || solver.diceType != 1 || solver.diceType != 2 || solver.diceType != 6){
+    if(solver.diceValue < 10){
+      solver.offsetX = 4;
+    }
+  }
+  if(solver.diceType == 6){
+    if(solver.diceValue < 100){
+      solver.offsetX = 4;
+      if(solver.diceValue < 10){
+        solver.offsetX = 8;
+      }
+    }
+  }
+
+  gb.display.cursorX = 50 + solver.offsetX;
   gb.display.cursorY = 10;
   gb.display.fontSize = 2;
   gb.display.print(solver.diceValue);
   gb.display.fontSize = 1;
+
+  solver.offsetX = 0;
 }
 
 //returns the current diceValue

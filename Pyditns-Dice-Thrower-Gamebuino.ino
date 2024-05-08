@@ -28,6 +28,7 @@ typedef struct {
   int startFrame;
   int currentFrame;
   int frameDelay;
+  int offsetX;
 } Solver;
 
 typedef struct {
