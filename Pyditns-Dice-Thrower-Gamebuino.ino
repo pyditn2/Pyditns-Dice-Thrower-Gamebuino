@@ -5,13 +5,19 @@
 //creates a Gamebuino object named gb
 Gamebuino gb;
 
-
 const byte arrow[] PROGMEM = {8,5,
 B00100000,
 B01100000,
 B11111100,
 B01100000,
 B00100000,
+};
+const byte spark[] PROGMEM = {5,5,
+B00100,
+B01110,
+B11111,
+B01110,
+B00100,
 };
 
 typedef struct {
@@ -40,15 +46,22 @@ typedef struct {
   int offsetX;
   int index;
   String text;
+  int resetProgress;
 } Adder;
 
 typedef struct {
   int numParticles;
+  int originX;
+  int originY;
+  int delta;
 } Handler;
 
 int diceValues[] = {4, 6, 8, 10, 12, 20, 100};  // Dice options
 int displayControl = 0;
 int resumeTime = 0;
+bool showParticle = false;
+int particleStart = 0;
+int resetTime = 30;
 
 // the setup routine runs once when Gamebuino starts up
 void setup(){
@@ -76,19 +89,25 @@ void loop(){
       displayControl = 1;
       initSolver();
       startSolver(getChooserSelection(), 40);
-      
-      
+    }
+    if(gb.buttons.timeHeld(BTN_B) == resetTime){
+      initAdder();
     }
 
     if (displayControl == 0) {
-            showSelection();
-        } else if (displayControl == 1) {
-            animateThrow();
-            showSolver();
-        } else if (displayControl == 2) {
-            showSolver();
-            // Other logic after rolling the dice can be added here
-        }
+      showSelection();
+    } else if (displayControl == 1) {
+      animateThrow();
+      showSolver();
+    } else if (displayControl == 2) {
+      showSolver();
+      if(gb.frameCount - particleStart < 12 && showParticle){
+        animateEffect();
+        showEffect();
+      }else{
+        showParticle = false;
+      }
+    }
     showDisplay();
     
     if(gb.buttons.repeat(BTN_LEFT, 2)){

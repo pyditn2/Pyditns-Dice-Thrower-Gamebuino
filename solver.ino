@@ -18,22 +18,30 @@ int throwDice(int max) {
 
 //animates the throw by cycling throw random possible numbers, until it lands on a final number
 void animateThrow() {
-    // Check if the animation is still ongoing
-    if (solver.currentFrame < solver.duration) {
-        if (gb.frameCount % solver.frameDelay == 0) {
-            // Roll the dice and increase the frame delay to simulate slowing down
-            solver.diceValue = throwDice(solver.diceType);
-            solver.frameDelay++;
-        }
-        solver.currentFrame++;
-    } else {
-        // Ensure addValue is only called once per dice roll
-        if (solver.currentFrame == solver.duration) {
-            addValue(getDiceValue(), getDiceType());
-            solver.currentFrame++;  // Prevent multiple calls to addValue
-            displayControl = 2;     // Indicate that the animation has ended
-        }
+  // Check if the animation is still ongoing
+  if (solver.currentFrame < solver.duration) {
+    if (gb.frameCount % solver.frameDelay == 0) {
+      // Roll the dice and increase the frame delay to simulate slowing down
+      solver.diceValue = throwDice(solver.diceType);
+      solver.frameDelay++;
     }
+    solver.currentFrame++;
+  } else {
+    // Ensure addValue is only called once per dice roll
+    if (solver.currentFrame == solver.duration) {
+      addValue(getDiceValue(), getDiceType());
+      if(solver.diceType == 0 || solver.diceType == 1 || solver.diceType == 2){
+        spawnEffect(44 + solver.offsetX, 12);
+      }else if( solver.diceType == 6){
+        spawnEffect(52 + solver.offsetX, 12);
+      }else{
+        spawnEffect(48 + solver.offsetX, 12);
+      }
+      particleStart = gb.frameCount;
+      solver.currentFrame++;  // Prevent multiple calls to addValue
+      displayControl = 2;     // Indicate that the animation has ended
+    }
+  }
 }
 
 //prepares the solver for the animation by setting the required parameters

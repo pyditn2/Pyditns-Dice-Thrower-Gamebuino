@@ -6,6 +6,7 @@ void initAdder(){
   adder.offsetX = 0;
   adder.index = 0;
   adder.text = "";
+  adder.resetProgress = 0;
 }
 
 void moveAdder(int delta){
@@ -31,6 +32,14 @@ void showAdder(){
 
   gb.display.drawFastHLine(0, 41, 84);
   gb.display.drawRect(71, 28, 14, 14);
+
+  if(gb.buttons.repeat(BTN_B, resetTime / 20)){
+    adder.resetProgress += LCDWIDTH / 25;
+  }
+  if(gb.buttons.released(BTN_B)){
+    adder.resetProgress = 0;
+  }
+  gb.display.drawFastHLine(0, 42, adder.resetProgress);
 }
 
 void addValue(int value, int diceType){
