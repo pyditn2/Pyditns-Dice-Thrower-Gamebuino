@@ -12,103 +12,98 @@ void showDisplay(){
  //} 
  switch (display.currentDice){
   case 0:
-    gb.display.drawTriangle(53, 2, 65, 21, 41, 21);
+    gb.display.drawTriangle(48, 2, 60, 21, 36, 21);
     break;
   case 1:
-    gb.display.drawRoundRect(43, 5, 20, 20, 3);
-    gb.display.drawLine(44, 6, 49, 1);
-    gb.display.drawLine(62, 6, 67, 1);
-    gb.display.drawLine(62, 22, 67, 17);
-    gb.display.drawLine(49, 1, 67, 1);
-    gb.display.drawLine(67, 17, 67, 1);
+    gb.display.drawRoundRect(38, 5, 20, 20, 3);
+    gb.display.drawLine(39, 6, 44, 1);
+    gb.display.drawLine(57, 6, 62, 1);
+    gb.display.drawLine(57, 22, 62, 17);
+    gb.display.drawLine(44, 1, 62, 1);
+    gb.display.drawLine(62, 17, 62, 1);
     break;
   case 2:
-    gb.display.drawTriangle(53, 2, 65, 21, 41, 21);
-    gb.display.drawTriangle(53, 30, 65, 21, 41, 21);
-    //side faces
-    gb.display.drawTriangle(53, 2, 65, 21, 65, 10);
-    gb.display.drawTriangle(53, 2, 41, 10, 41, 21);
+    gb.display.drawTriangle(48, 2, 60, 21, 36, 21);
+    gb.display.drawTriangle(48, 30, 60, 21, 36, 21);
+    // side faces
+    gb.display.drawTriangle(48, 2, 60, 21, 60, 10);
+    gb.display.drawTriangle(48, 2, 36, 10, 36, 21);
     break;
   case 3:
-    //number face
-    gb.display.drawLine(56, 2, 71, 19);
-    gb.display.drawLine(56, 2, 41, 19);
-    gb.display.drawLine(41, 19, 56, 25);
-    gb.display.drawLine(71, 19, 56, 25);
-    //number adjacent right
-    //gb.display.drawTriangle(56, 2, 71, 19, 78, 23);
-    //gb.display.drawTriangle(56, 2, 41, 19, 34, 23);
-    gb.display.drawLine(71, 19, 78, 23);
-    gb.display.drawLine(78, 15, 78, 23);
-    gb.display.drawLine(78, 15, 56, 2);
-    //number adjacent left
-    gb.display.drawLine(34, 23, 34, 15);
-    gb.display.drawLine(34, 15, 56, 2);
-    //bottom faces
-    gb.display.drawLine(56, 25, 56, 37);
-    gb.display.drawLine(78, 23, 56, 37);
-    gb.display.drawLine(34, 23, 56, 37);
-    gb.display.drawLine(34, 23, 41, 19);
+    // number face
+    gb.display.drawLine(51, 2, 66, 19);
+    gb.display.drawLine(51, 2, 36, 19);
+    gb.display.drawLine(36, 19, 51, 25);
+    gb.display.drawLine(66, 19, 51, 25);
+    // number adjacent right
+    gb.display.drawLine(66, 19, 73, 23);
+    gb.display.drawLine(73, 15, 73, 23);
+    gb.display.drawLine(73, 15, 51, 2);
+    // number adjacent left
+    gb.display.drawLine(29, 23, 29, 15);
+    gb.display.drawLine(29, 15, 51, 2);
+    // bottom faces
+    gb.display.drawLine(51, 25, 51, 37);
+    gb.display.drawLine(73, 23, 51, 37);
+    gb.display.drawLine(29, 23, 51, 37);
+    gb.display.drawLine(29, 23, 36, 19);
     break;
   case 4:
-    //gb.display.drawRect(48, 6, 16, 2);
-    //number face
-    gb.display.drawLine(48, 8, 64, 8);
-    gb.display.drawLine(48, 8, 42, 16);
-    gb.display.drawLine(42, 16, 56, 26);
-    gb.display.drawLine(64, 8, 70, 16);
-    gb.display.drawLine(70, 16, 56, 26);
-    //gb.display.drawTriangle(48, 6, 41, 16, 42, 9);
-    //gb.display.drawTriangle(64, 6, 71, 16, 70, 9);
-    //2 downward faces
-    gb.display.drawLine(56, 26, 56, 30);
-    gb.display.drawLine(43, 28, 56, 30);
-    gb.display.drawLine(43, 28, 37, 18);
-    gb.display.drawLine(42, 16, 37, 18);
+    // number face
+    gb.display.drawLine(43, 8, 59, 8);
+    gb.display.drawLine(43, 8, 37, 16);
+    gb.display.drawLine(37, 16, 51, 26);
+    gb.display.drawLine(59, 8, 65, 16);
+    gb.display.drawLine(65, 16, 51, 26);
+    // 2 downward faces
+    gb.display.drawLine(51, 26, 51, 30);
+    gb.display.drawLine(38, 28, 51, 30);
+    gb.display.drawLine(38, 28, 32, 18);
+    gb.display.drawLine(37, 16, 32, 18);
 
-    gb.display.drawLine(69, 28, 56, 30);
-    gb.display.drawLine(69, 28, 75, 18);
-    gb.display.drawLine(70, 16, 75, 18);
-    //right face
-    gb.display.drawLine(75, 18, 75, 10);
-    gb.display.drawLine(75, 10, 69, 4);
-    gb.display.drawLine(64, 8, 69, 4);
+    gb.display.drawLine(64, 28, 51, 30);
+    gb.display.drawLine(64, 28, 70, 18);
+    gb.display.drawLine(65, 16, 70, 18);
+    // right face
+    gb.display.drawLine(70, 18, 70, 10);
+    gb.display.drawLine(70, 10, 64, 4);
+    gb.display.drawLine(59, 8, 64, 4);
 
-    //left face
-    gb.display.drawLine(37, 18, 37, 10);
-    gb.display.drawLine(37, 10, 43, 4);
-    gb.display.drawLine(48, 8, 43, 4);
+    // left face
+    gb.display.drawLine(32, 18, 32, 10);
+    gb.display.drawLine(32, 10, 38, 4);
+    gb.display.drawLine(43, 8, 38, 4);
 
-    //top face
-    gb.display.drawLine(56, 0, 69, 4);
-    gb.display.drawLine(56, 0, 43, 4);
+    // top face
+    gb.display.drawLine(51, 0, 64, 4);
+    gb.display.drawLine(51, 0, 38, 4);
 
     break;
   case 5:
-    //number side
-    gb.display.drawTriangle(42, 9, 70, 9, 56, 27);
-    //top middle
-    gb.display.drawTriangle(42, 9, 70, 9, 56, 0);
-    //left side
-    gb.display.drawTriangle(42, 9, 56, 27, 38, 27);
-    gb.display.drawTriangle(42, 9, 38, 9, 38, 27);
-    //top left
-    gb.display.drawTriangle(42, 9, 38, 9, 56, 0);
-    //right side
-    gb.display.drawTriangle(74, 27, 70, 9, 56, 27);
-    gb.display.drawTriangle(74, 27, 70, 9, 74, 9);
-    //top right
-    gb.display.drawTriangle(56, 0, 70, 9, 74, 9);
-    //bottom
-    gb.display.drawTriangle(56, 36, 56, 27, 38, 27);
-    gb.display.drawTriangle(74, 27, 56, 36, 56, 27);
+    // number side
+    gb.display.drawTriangle(37, 9, 65, 9, 51, 27);
+    // top middle
+    gb.display.drawTriangle(37, 9, 65, 9, 51, 0);
+    // left side
+    gb.display.drawTriangle(37, 9, 51, 27, 33, 27);
+    gb.display.drawTriangle(37, 9, 33, 9, 33, 27);
+    // top left
+    gb.display.drawTriangle(37, 9, 33, 9, 51, 0);
+    // right side
+    gb.display.drawTriangle(69, 27, 65, 9, 51, 27);
+    gb.display.drawTriangle(69, 27, 65, 9, 69, 9);
+    // top right
+    gb.display.drawTriangle(51, 0, 65, 9, 69, 9);
+    // bottom
+    gb.display.drawTriangle(51, 36, 51, 27, 33, 27);
+    gb.display.drawTriangle(69, 27, 51, 36, 51, 27);
     break;
   case 6:
-    gb.display.drawCircle(60, 15, 15);
+    gb.display.drawCircle(55, 15, 15);
     break;
   default:
-    gb.display.drawTriangle(53, 2, 64, 21, 42, 21);
- }
+    gb.display.drawTriangle(48, 2, 59, 21, 37, 21);
+  }
 }
 
 //sets the currently displayed dice type 

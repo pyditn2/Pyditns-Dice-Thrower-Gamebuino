@@ -14,7 +14,6 @@ B01100000,
 B00100000,
 };
 
-
 typedef struct {
   byte current;
   byte max;
@@ -39,9 +38,8 @@ typedef struct {
 typedef struct {
   int total;
   int offsetX;
-  int values[];
-  int diceType[];
   int index;
+  String text;
 } Adder;
 
 typedef struct {
@@ -68,7 +66,8 @@ void loop(){
     if(gb.buttons.pressed(BTN_C)){
       initGame();
     }
-    
+    gb.display.cursorX = 70;
+    gb.display.print(gb.getCpuLoad());
     drawMenu();
     updateChooser();
     drawChooser();
@@ -81,15 +80,15 @@ void loop(){
       
     }
 
-    if(displayControl == 0){
-      showSelection();
-
-    }
-    if(displayControl == 1){
-      animateThrow();
-      showSolver();
-      
-    }
+    if (displayControl == 0) {
+            showSelection();
+        } else if (displayControl == 1) {
+            animateThrow();
+            showSolver();
+        } else if (displayControl == 2) {
+            showSolver();
+            // Other logic after rolling the dice can be added here
+        }
     showDisplay();
     
     if(gb.buttons.repeat(BTN_LEFT, 2)){

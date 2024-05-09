@@ -17,19 +17,23 @@ int throwDice(int max) {
 }
 
 //animates the throw by cycling throw random possible numbers, until it lands on a final number
-void animateThrow(){
-
-  if (solver.currentFrame < solver.duration || solver.currentFrame == solver.duration) {
-    if(gb.frameCount % solver.frameDelay == 0){
-      solver.diceValue = throwDice(solver.diceType);
-      solver.frameDelay++;
+void animateThrow() {
+    // Check if the animation is still ongoing
+    if (solver.currentFrame < solver.duration) {
+        if (gb.frameCount % solver.frameDelay == 0) {
+            // Roll the dice and increase the frame delay to simulate slowing down
+            solver.diceValue = throwDice(solver.diceType);
+            solver.frameDelay++;
+        }
+        solver.currentFrame++;
+    } else {
+        // Ensure addValue is only called once per dice roll
+        if (solver.currentFrame == solver.duration) {
+            addValue(getDiceValue(), getDiceType());
+            solver.currentFrame++;  // Prevent multiple calls to addValue
+            displayControl = 2;     // Indicate that the animation has ended
+        }
     }
-    solver.currentFrame++;
-    
-  }
-  if (solver.currentFrame == solver.duration) {
-    addValue(getDiceValue(), getDiceType());
-  }
 }
 
 //prepares the solver for the animation by setting the required parameters
@@ -56,7 +60,7 @@ void showSolver(){
     }
   }
 
-  gb.display.cursorX = 50 + solver.offsetX;
+  gb.display.cursorX = 45 + solver.offsetX;
   gb.display.cursorY = 10;
   gb.display.fontSize = 2;
   gb.display.print(solver.diceValue);

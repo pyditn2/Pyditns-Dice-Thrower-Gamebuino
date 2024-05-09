@@ -56,7 +56,7 @@ void drawMenu(){
 
 //draws the current selection as a bigger number inside the dice to the screen
 void showSelection(){
-  gb.display.cursorX = 50;
+  gb.display.cursorX = 45;
   gb.display.cursorY = 10;
   gb.display.fontSize = 2;
   gb.display.print(diceValues[chooser.current]);
