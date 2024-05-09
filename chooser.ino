@@ -23,12 +23,14 @@ void updateChooser(){
   }
 
   if(gb.buttons.repeat(BTN_DOWN, 4)){
+    gb.sound.playTick();
     chooser.current ++;
     if(chooser.current > chooser.max){
       chooser.current = 0;
     }
   }
   if(gb.buttons.repeat(BTN_UP, 4)){
+    gb.sound.playTick();
     if(chooser.current == 0){
       chooser.current = chooser.max;
     }else{

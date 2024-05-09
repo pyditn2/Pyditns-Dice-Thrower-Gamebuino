@@ -26,4 +26,12 @@ void showEffect(){
   gb.display.drawBitmap(effect.originX + effect.delta, effect.originY + (effect.delta * -1), spark);
   gb.display.drawBitmap(effect.originX + (effect.delta * -1), effect.originY + effect.delta, spark);
   gb.display.drawBitmap(effect.originX + (effect.delta * -1), effect.originY + (effect.delta * -1), spark);
+
+  if(getDiceValue() == diceValues[getDiceType()]){
+    gb.display.drawBitmap(effect.originX, effect.originY + (effect.delta * 2), spark);
+    gb.display.drawBitmap(effect.originX, effect.originY + (effect.delta * -2), spark);
+    gb.display.drawBitmap(effect.originX + (effect.delta * 2), effect.originY, spark);
+    gb.display.drawBitmap(effect.originX + (effect.delta * -2), effect.originY, spark);
+  }
+  
 }
