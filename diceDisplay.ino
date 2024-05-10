@@ -100,6 +100,27 @@ void showDisplay(){
     break;
   case 6:
     gb.display.drawCircle(55, 15, 15);
+    //horizontal lines
+    gb.display.drawFastHLine(42, 8, 26);
+    gb.display.drawFastHLine(42, 21, 27);
+    gb.display.drawFastHLine(44, 5, 23);
+    gb.display.drawFastHLine(43, 24, 25);
+    //vertical lines top
+    gb.display.drawFastVLine(46, 5, 3);
+    gb.display.drawFastVLine(62, 5, 3);
+    gb.display.drawFastVLine(54, 5, 3);
+
+    gb.display.drawFastVLine(50, 2, 3);
+    gb.display.drawFastVLine(58, 1, 5);    
+
+    //vertical lines bottom
+    gb.display.drawFastVLine(66, 21, 3);
+    gb.display.drawFastVLine(50, 21, 3);
+    gb.display.drawFastVLine(58, 21, 3);
+
+    gb.display.drawFastVLine(46, 25, 3);
+    gb.display.drawFastVLine(62, 25, 3);
+    gb.display.drawFastVLine(54, 25, 5);
     break;
   default:
     gb.display.drawTriangle(48, 2, 59, 21, 37, 21);
