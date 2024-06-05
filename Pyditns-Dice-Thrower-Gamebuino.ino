@@ -95,6 +95,7 @@ int resumeTime = 0;
 bool showParticle = false;
 int particleStart = 0;
 int resetTime = 30;
+long randomAdv = 0;
 
 const uint16_t dice_sound[] PROGMEM = {0x0045, 0x012C, 0x0000};
 
@@ -151,6 +152,7 @@ void loop(){
       moveAdder(2);
     }
     showAdder();
+    randomAdv = rand();
   }
   
 }
