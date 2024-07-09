@@ -97,6 +97,8 @@ int particleStart = 0;
 int resetTime = 30;
 long randomAdv = 0;
 
+bool dsa = true;
+
 const uint16_t dice_sound[] PROGMEM = {0x0045, 0x012C, 0x0000};
 
 // the setup routine runs once when Gamebuino starts up
@@ -144,6 +146,10 @@ void loop(){
         showParticle = false;
       }
     }
+
+    if(gb.buttons.pressed(BTN_RIGHT) && (gb.buttons.pressed(BTN_B))){
+      dsa = !dsa;
+    }
     showDisplay();
     
     if(gb.buttons.repeat(BTN_LEFT, 2)){
@@ -153,6 +159,14 @@ void loop(){
     }
     showAdder();
     randomAdv = rand();
+
+    gb.display.cursorX = 72;
+    gb.display.cursorY = 1;
+    if(dsa){
+      gb.display.print("DSA");
+    }else{
+      gb.display.print("DND");
+    }
   }
   
 }
