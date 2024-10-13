@@ -2,7 +2,7 @@
 Arrow chooser;
 
 void initChooser(){
-  chooser.current = 1;
+  chooser.current = 5;
   chooser.max = 6;
   chooser.x = 15;
   chooser.right = true;
